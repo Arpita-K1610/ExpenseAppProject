@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+</head>
+<body>
+    <form id="signup-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="button" onclick="submitForm()">Sign Up</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate server connection (replace with actual server code)
+            const data = { name, email, password };
+            console.log('Sending data to server:', data);
+
+            // Here you'd use JavaScript Fetch API or other methods to send the data to the server.
+            // In a real scenario, the server would handle the form data, validate it, and store it securely.
+
+            // For this example, we'll simply display a message to show that it worked.
+            alert('Signup successful! (Simulated)');
+        }
+    </script>
+</body>
+</html>
