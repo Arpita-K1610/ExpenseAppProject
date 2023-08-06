@@ -1,51 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup Page</title>
+  <title>Form Submission</title>
 </head>
 <body>
-    
-    <form id="signup-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="button" onclick="submitForm()">Sign Up</button>
-    </form>
+  <!-- HTML form -->
+  <form id="myForm">
+    <!-- form fields here -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
-    <script>
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-            const userData = { name, email, password };
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
-            fetch('/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.message);
-                } else {
-                    alert('Signup successful!');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            });
-        }
-    </script>
+    <!-- Add more form fields as needed -->
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Sign Up button for new users -->
+  <button id="signUpButton">Sign Up</button>
+
+  <!-- JavaScript code -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("myForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Collect form data
+        const formData = new FormData(form);
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+          formDataObject[key] = value;
+        });
+
+        // Call the backend API with the form data
+        // Replace 'API_ENDPOINT' with your backend API URL and 'PORT_NUMBER' with the port number where the backend is running
+        fetch("http://localhost:3000/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataObject),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Handle successful response if needed
+              console.log(data);
+            } else {
+              // Handle error response
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // Handle "Sign Up" button click
+      const signUpButton = document.getElementById("signUpButton");
+      signUpButton.addEventListener("click", function () {
+        // Redirect to the signup page or take appropriate action
+        // Replace 'SIGNUP_PAGE_URL' with the URL for the signup page
+        window.location.href = "SIGNUP_PAGE_URL";
+      });
+    });
+  </script>
 </body>
 </html>
