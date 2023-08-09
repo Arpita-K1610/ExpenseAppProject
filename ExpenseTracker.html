@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> New and advanced expense tracker</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <style>
+            .row > div{
+                padding: 20px;
+                background-color: rgb(28, 141, 137);
+                border: 2px solid black;
+                margin:10px;
+                width: 949px;
+            }
+            table{
+                border: 2px solid black;
+
+
+            }
+            td, th{border:2px solid black ;
+                padding:5px;
+
+            }
+            body {
+                background-image: url('light-blue.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: auto;
+                
+            }
+            .section{
+                background-color: #2d6199; /* Blue color for the top part */
+                padding: 20px;
+                color: #fff;
+                font-family: sans-serif;
+            }
+            
+            .button.premium{
+                display: none;
+            }
+            
+            .filetabel {
+                width: fit-content;
+              }
+              
+              .filetabel th:nth-child(2),
+              .filetabel td:nth-child(2) {
+                max-width: 150px; /* Adjust the width as needed */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              header{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+                background:radial-gradient();
+                font-size: xx-large;
+                box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+                font-family: sans-serif;
+                font-style:calc();
+                color: burlywood; 
+
+              }
+
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <header>Expense</header>
+            <div>
+                <h3 id="premiumMessage" > </h3>
+                
+                
+            </div>
+            
+    
+        </div>>
+        <div class="container">
+            <button class="preex"  onclick="download()"id="preexpenses">Download</button>
+            <div id="leader">
+            
+            
+            
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="amount"> Expense amount</label>
+                    <input id="amount" type="number"  name="amount">
+                    <label for="des"> Description</label>
+                    <input id="des" type="text" name="description">
+                    <label for="category"> Choose a category</label>
+                    <select name="cat" id="category" value="choose" selected  name="category">
+                        <option value="Movie">Movie</option>
+                        <option value="patrol">Patrol</option>
+                        <option value="food">Food</option>
+                        <option value="gym">Gym</option>
+                    </select>
+                    <input class="button" type="submit" id="Add" value="Add Expense">
+                    
+                    <button class="button" type="submit" id="premium" >Buy premium</button>
+                    <div>
+                        <select name="cat" id="dynamicpagination" value="choose"  name="category">
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            
+                        </select>
+                    </div>
+                    
+                    
+                    
+                    <table>
+                        
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="list">
+
+
+                        </tbody>
+
+
+                        
+                    </table>
+                    <div class="conatiner" id="pagination">
+                    </div>
+                    
+                    
+                    
+                    
+
+
+
+
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+
+        <div>
+            <h2 id="phead" ></h2>
+            <ul id="leaderlist">
+
+            </ul>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12", id="filesdiv">
+                    
+                        <h2 id="filehead" class="head"></h2>
+                        
+                        <table class="filetabel">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Time<th>
+                                    <th>Files</th>
+                                    
+                                </tr>
+            
+                            </thead>
+                            <tbody id="files">
+            
+            
+                            </tbody>
+            
+            
+                            
+                        </table>
+            
+            
+            
+                    
+
+                </div>
+            </div>
+
+        </div>
+        
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script src="Ext.js"></script>
+    </body>
+</html>
